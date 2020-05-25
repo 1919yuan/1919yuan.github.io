@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 1919CNY</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on 1919CNY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 25 May 2020 12:52:26 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cloudflare</title>
+      <link>/tags/cloudflare/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/tags/cloudflare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DD-WRT</title>
+      <link>/tags/dd-wrt/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/tags/dd-wrt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>getssl</title>
+      <link>/tags/getssl/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/tags/getssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>QNAP</title>
+      <link>/tags/qnap/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/tags/qnap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSL</title>
+      <link>/tags/ssl/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/tags/ssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>firebase</title>
+      <link>/tags/firebase/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/firebase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>firestore</title>
+      <link>/tags/firestore/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/firestore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hosting</title>
+      <link>/tags/hosting/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/hosting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nuxt</title>
+      <link>/tags/nuxt/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nuxt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSR</title>
+      <link>/tags/ssr/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ssr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exponential family</title>
+      <link>/tags/exponential-family/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/exponential-family/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>/tags/machine-learning/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NeurIPS</title>
+      <link>/tags/neurips/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/neurips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NIPS</title>
+      <link>/tags/nips/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>non-parametric</title>
+      <link>/tags/non-parametric/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/non-parametric/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>/tags/research/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Statistics</title>
+      <link>/tags/statistics/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ADMM</title>
+      <link>/tags/admm/</link>
+      <pubDate>Mon, 28 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/admm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Augmented Lagrangian</title>
+      <link>/tags/augmented-lagrangian/</link>
+      <pubDate>Mon, 28 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/augmented-lagrangian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimization</title>
+      <link>/tags/optimization/</link>
+      <pubDate>Mon, 28 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dynamic Warping</title>
+      <link>/tags/dynamic-warping/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dynamic-warping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Localization</title>
+      <link>/tags/localization/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/localization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robotics</title>
+      <link>/tags/robotics/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/robotics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series</title>
+      <link>/tags/time-series/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latex</title>
+      <link>/tags/latex/</link>
+      <pubDate>Fri, 08 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>template</title>
+      <link>/tags/template/</link>
+      <pubDate>Fri, 08 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/template/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ustc</title>
+      <link>/tags/ustc/</link>
+      <pubDate>Fri, 08 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ustc/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

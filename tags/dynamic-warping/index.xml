@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dynamic Warping on 1919CNY</title>
+    <link>/tags/dynamic-warping/</link>
+    <description>Recent content in Dynamic Warping on 1919CNY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Thu, 07 Jul 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/dynamic-warping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Robust Semantic Place Recognition with Vocabulary Tree and Landmark Detection
+</title>
+      <link>/post/2011-07-07-bolts/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2011-07-07-bolts/</guid>
+      <description>This is my main project when I was working on Robotics at Purdue ECE.
+Place recognition with image time series, published at ASP-AVS-11 workshop.
+Paper | Slides | Video | BibTeX</description>
+    </item>
+    
+  </channel>
+</rss>
