@@ -203,7 +203,8 @@
       <h1 class="post-title">GdocifyMd</h1>
       <p class="post-meta">@Lin Yuan · May 31, 2020</p>
     </header>
-    <article class="post-content"><blockquote>
+    <article class="post-content"><p><em>Write Markdown in Google Docs! Tables, Code, Images, Lists also supported!</em></p>
+<blockquote>
 <p><strong>By using the GdocifyMd Google Docs Add-on, you agree to our
 <a href="/gdocifymd/terms">Terms of Service</a> and <a href="/gdocifymd/privacy">Privacy Policy</a></strong></p>
 </blockquote>
@@ -211,8 +212,104 @@
 importing <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> documents into
 Google Docs.</p>
 <h2 id="installation">Installation</h2>
+<p>Search for &ldquo;GdocifyMd&rdquo; on <a href="https://gsuite.google.com/marketplace/">GSuite
+Marketplace</a></p>
+<p>We ask for 3 authrization scopes at the OAuth Client Authorization Screen:</p>
+<ul>
+<li>
+<p>View and manage your Google Docs documents</p>
+<p><a href="https://www.googleapis.com/auth/documents">https://www.googleapis.com/auth/documents</a></p>
+<p>This permission is used to write formatted Markdown documents into your
+Google docs.</p>
+</li>
+<li>
+<p>Display and run third-party web content in prompts and sidebars inside
+Google applications</p>
+<p><a href="https://www.googleapis.com/auth/script.container.ui">https://www.googleapis.com/auth/script.container.ui</a></p>
+<p>This permission is used to show the dialog box which allows you to input the
+markdown text that you intend to import into your Google Docs.</p>
+</li>
+<li>
+<p>Connect to an external service</p>
+<p><a href="https://www.googleapis.com/auth/script.external_request">https://www.googleapis.com/auth/script.external_request</a></p>
+<p>This permission is used to send the markdown document to our server, so that
+the syntax of the markdown document can be parsed, and properly formatted
+Google Docs content can be written back to your Google account.</p>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
+<p>Choose &ldquo;Add-ons -&gt; gdocifymd -&gt; Gdocify Markdown&rdquo;.</p>
+<p><img src="/images/gdocifymd/screen_1.png" alt=""></p>
+<p>Input any Markdown content in the textarea:</p>
+<p><img src="/images/gdocifymd/screen_2.png" alt=""></p>
+<p>Click &ldquo;Gdocify!&quot;, status message will appear at the bottom of the textarea, also
+telling you how many free conversions you have used in the last 30 days. Our
+limit is 50 conversions per every 30 days.</p>
+<p><img src="/images/gdocifymd/screen_3.png" alt=""></p>
+<p>The markdown content will be imported into Google Docs with native formatting:</p>
+<p><img src="/images/gdocifymd/screen_4.png" alt=""></p>
+<p>You can also select part of the text in Google Doc before clicking the &ldquo;Gdocify
+Markdown&rdquo; menu. The selected text will be copied as markdown content in the
+following dialog box:</p>
+<p><img src="/images/gdocifymd/screen_5.png" alt="">
+<img src="/images/gdocifymd/screen_6.png" alt=""></p>
+<p>The imported content will be appended to the end of the document. Because of
+limitations in Google Docs API, unfortunately we cannot replace the selected
+contents yet.</p>
+<p>GdocifyMd also supports converting code blocks inside markdown document. Just
+input code blocks quoted with &ldquo;```&rdquo; as you would in any markdown file. Select
+the desired syntax highlighter theme and tab width.</p>
+<p><img src="/images/gdocifymd/screen_7.png" alt="">
+<img src="/images/gdocifymd/screen_8.png" alt=""></p>
+<p>Then you will see the formatted code block in Google Docs. If the background of
+the code block is not desirable, just click the &ldquo;Paint bucket&rdquo; tool in Google
+Docs, and choose a color you like. Note that a code block is simply a one-cell
+table inside Google Docs.</p>
+<p><img src="/images/gdocifymd/screen_9.png" alt=""></p>
+<p>You can also use relative urls in the markdown content. Be sure to configure an
+URL prefix for relative urls.</p>
+<p><img src="/images/gdocifymd/screen_10.png" alt=""></p>
+<p>Tables are also supported:</p>
+<p><img src="/images/gdocifymd/screen_11.png" alt=""></p>
+<p>But with limitations that border specifications will be lost.</p>
+<p>You can see the resulting effect: links are prefixed with an absolute URL, and
+native tables appear in Google Docs.</p>
+<p><img src="/images/gdocifymd/screen_12.png" alt=""></p>
+<p>Images are also supported: just use the regular <code>![]()</code> syntax.</p>
+<p><img src="/images/gdocifymd/screen_13.png" alt="">
+<img src="/images/gdocifymd/screen_14.png" alt=""></p>
 <h2 id="known-issues--limitations">Known Issues / Limitations</h2>
+<ul>
+<li>
+<p>Bookmarks and cross references cannot be kept:</p>
+<p>Google Docs can only use randomly generated bookmark identifiers which doesn&rsquo;t
+work with markdown syntax.</p>
+</li>
+<li>
+<p>Table styles cannot be preserved.</p>
+</li>
+<li>
+<p>Can only append imported markdown content to the end of the file or replace
+the entire file. Cannot perform operations like &ldquo;select and replace&rdquo;.</p>
+</li>
+<li>
+<p>Certain markdown text patterns will result in extra empty lines.</p>
+</li>
+</ul>
+<h2 id="acknowledgement">Acknowledgement</h2>
+<p>The server side of GdocifyMd uses Google Docs&rsquo;s Go v1 API, with the following
+open source libraries:</p>
+<ol>
+<li>
+<p><a href="https://github.com/gomarkdown/markdown">github.com/gomarkdown/markdown</a></p>
+<p>This library is used for parsing the markdown input.</p>
+</li>
+<li>
+<p><a href="https://github.com/alecthomas/chroma">github.com/alecthomas/chroma</a></p>
+<p>This library is used for parsing code blocks and emitting syntax highlighted
+tokens.</p>
+</li>
+</ol>
 </article>
     <footer class="post-footer">
       
