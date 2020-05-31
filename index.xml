@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>1919CNY</title>
+    <title>@1919yuan</title>
     <link>/</link>
-    <description>Recent content on 1919CNY</description>
+    <description>Recent content on @1919yuan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
@@ -28,6 +28,26 @@
       
       <guid>/about/</guid>
       <description>这个人很懒，什么都没留下</description>
+    </item>
+    
+    <item>
+      <title>GdocifyMd Privacy Policy</title>
+      <link>/gdocifymd/privacy/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/gdocifymd/privacy/</guid>
+      <description>Privacy Policy GdocifyMd (&amp;ldquo;we&amp;rdquo;, &amp;ldquo;our&amp;rdquo;, or &amp;ldquo;us&amp;rdquo;) understands that privacy is essential to the users of our products (&amp;ldquo;Users&amp;rdquo;, &amp;ldquo;you&amp;rdquo;). This policy describes the steps we take to maintain your privacy when you use our add-on (&amp;ldquo;Services&amp;rdquo;). By using our Services, you agree to the collection and use of information in accordance with this policy.
+ Data Collection and Use {#data-collection-and-use} Add-on Authorization Scopes {#add-on-authorization-scopes} How We Share Information {#how-we-share-information} Your Choices About Information {#your-choices-about-information} EU General Data Protection Regulation (GDPR) {#gdpr} How to Contact Us {#how-to-contact-us} Changes to Our Privacy Policy {#changes-to-our-privacy-policy}  Data Collection and Use User Analytics  Our Services use Google Analytics to capture anonymized usage information (&amp;ldquo;User Analytics&amp;rdquo;) Our Services only collect user email associated with the Google account using the GdocifyMd Add-On, for the purpose of rate-limiting free API calls to our server.</description>
+    </item>
+    
+    <item>
+      <title>GdocifyMd Terms of Service</title>
+      <link>/gdocifymd/terms/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/gdocifymd/terms/</guid>
+      <description>Terms of Service Thank you for using GdocifyMd. Please carefully review the terms outlined in this document before using the GdocifyMd Add-On (&amp;ldquo;Service&amp;rdquo;).
+This Terms of Service (“Agreement”) is a binding contract between you and GdocifyMd (&amp;ldquo;we&amp;rdquo;, “our”, or &amp;ldquo;us&amp;rdquo;). By accessing or using the Service, clicking “I Agree”, or by otherwise affirmatively stating your desire to use the Service, you signify that you have read, understood, and agree to be bound by this Agreement and to the collection and use of your information as set forth in the GdocifyMd Add-On Privacy Policy.</description>
     </item>
     
     <item>
