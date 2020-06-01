@@ -31,14 +31,14 @@
     </item>
     
     <item>
-      <title>GdocifyMd Pro</title>
+      <title>GDocifyMd Pro</title>
       <link>/gdocifymd/subscribe/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/gdocifymd/subscribe/</guid>
-      <description>Monthly Plan Get unlimited number of changes for $1 a month:
-Please make sure you input the correct Google Account Email associated with your Google Docs Add-on usage in the following input before making the purchase!
-  paypal.Buttons({ style: { shape: &#39;rect&#39;, color: &#39;gold&#39;, layout: &#39;vertical&#39;, label: &#39;subscribe&#39;, }, createSubscription: function(data, actions) { return actions.subscription.create({ &#39;plan_id&#39;: &#39;P-9WJ2924713744222JL3KF2JQ&#39; }); }, onApprove: function(data, actions) { $.post( &#34;https://us-central1-gdocify.cloudfunctions.net/Api/Subscribe&#34;, { email: $(&#34;#google-account-email-monthly&#34;).val(), plan: &#34;</description>
+      <description>GDocifyMd Pro  Get unlimited conversions for $1 a month, or $7.99 a year.
+ Please make sure you input the correct Google Account Email associated with your Google Docs Add-on usage in the following input before making the purchase!
+ Choose a subscription length:  1 month - $1 6 months - $4.99 12 months - $7.99   var price = &#39;1&#39;; var plan = &#39;monthly&#39;; $(&#39;input[type=radio][name=subscription]&#39;).change(function() { plan = this.</description>
     </item>
     
     <item>
