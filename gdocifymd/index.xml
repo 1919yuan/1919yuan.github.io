@@ -18,9 +18,9 @@
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/gdocifymd/subscribe/</guid>
-      <description>GDocifyMd Pro  Get unlimited conversions for $1 a month, or $7.99 a year.
+      <description>GDocifyMd Pro  Get unlimited number of conversions for $1 a month, $4.99 for 6 months, or $7.99 a year.
  Please make sure you input the correct Google Account Email associated with your Google Docs Add-on usage in the following input before making the purchase!
- Choose a subscription length:  1 month - $1 6 months - $4.99 12 months - $7.99   var price = &#39;1&#39;; var plan = &#39;monthly&#39;; $(&#39;input[type=radio][name=subscription]&#39;).change(function() { plan = this.</description>
+ Choose a subscription length:  1 month - $1 6 months - $4.99 12 months - $7.99   var price = &#39;1&#39;; var plan = &#39;monthly&#39;; $(&#39;input[type=radio][name=subscription]&#39;).</description>
     </item>
     
     <item>
