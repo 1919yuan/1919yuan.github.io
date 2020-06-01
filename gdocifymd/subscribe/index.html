@@ -243,6 +243,10 @@ your Google Docs Add-on usage in the following input before making the purchase!
           },
           function (data, status) {
             alert(data.error_message);
+          })
+          .fail(function() {
+            alert("There was an error when updating your membership, please " +
+                  "contact 1919yuan+gdocifymdpro@gmail.com for assistance.");
           });
       }
     }).render('#paypal-button-container-monthly');
@@ -283,6 +287,10 @@ your Google Docs Add-on usage in the following input before making the purchase!
           },
           function (data, status) {
             alert(data.error_message);
+          })
+          .fail(function() {
+            alert("There was an error when updating your membership, please " +
+                  "contact 1919yuan+gdocifymdpro@gmail.com for assistance.");
           });
       }
     }).render('#paypal-button-container-annual');
