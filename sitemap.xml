@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gdocifymd/subscribe/</loc>
     <lastmod>2020-06-01T00:00:00+00:00</lastmod>
   </url>
@@ -80,11 +85,6 @@
   <url>
     <loc>/categories/technology/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-04-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
