@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on @1919yuan</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on @1919yuan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 25 May 2020 12:52:26 -0400</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Replace QNAP&#39;s SSL Certificate &amp; Private Key programmatically</title>
+      <link>/post/2020-05-25-cloudflare/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/post/2020-05-25-cloudflare/</guid>
+      <description>I&amp;rsquo;ve been trying to setting up DDNS for my QNAP NAS with SSL connection. I don&amp;rsquo;t want to use the QNAP Cloudlink DDNS service because I wanted to use QVPN service to globally gate all traffic going out from QNAP. And that disables the QNAP Cloudlink service from getting the real IP address for my NAS.
+The basic logic goes along this tutorial: How to set up a free dynamic hostname with SSL cert using Google Domains, except the following moving parts:</description>
+    </item>
+    
+    <item>
+      <title>Deploy Nuxt to Firebase Functions and Hosting in Universal Mode (SSR) with Firebase Authentication and Firestore</title>
+      <link>/post/2020-04-20-nuxt-firebase/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020-04-20-nuxt-firebase/</guid>
+      <description>The example repository is located at https://github.com/1919yuan/nuxt-firebase-example
+ I&amp;rsquo;ve been volunteering in an NPO and learning webapp development recently. After procrastinating for a long time, I finally settled down on using Nuxt.js for developing the website for the NPO. Even though there are many resources on nuxtjs.org about deploying to different environments, there is not an official guide about deploying an universal mode Nuxt.js application to Firebase. This becomes more difficult when you want to leverage Firebase&amp;rsquo;s authentication and firestore service in universal mode.</description>
+    </item>
+    
+    <item>
+      <title>Non-parametric Exponential Family Model with applications to ERGM
+</title>
+      <link>/post/2012-09-10-npexp/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2012-09-10-npexp/</guid>
+      <description>After leaving my first adventure in a robotics lab at Purdue, I did 2+ years research on machine learning. The result is two NIPS workshop papers, one proposing a non-parametric exponential family model and the other applies the model to social network analysis - exponential random graph models.
+The theory of non-parametric exponential family model is more interesting, and we later submitted an extended version of the paper to arXiv.</description>
+    </item>
+    
+    <item>
+      <title>Augmented Lagrangian method on the Thomson problem
+</title>
+      <link>/post/2012-05-28-cs590opt/</link>
+      <pubDate>Mon, 28 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2012-05-28-cs590opt/</guid>
+      <description>During the Spring 2012 semester, Nan Ding and I took the class CS590OPT together. The final project we did was on developing Alternating Direction Method of Multipliers (ADMM) and Augmented Lagrangian Method (ALM) and use it to solve the Thomson problem.
+Report | Code</description>
+    </item>
+    
+    <item>
+      <title>Robust Semantic Place Recognition with Vocabulary Tree and Landmark Detection
+</title>
+      <link>/post/2011-07-07-bolts/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2011-07-07-bolts/</guid>
+      <description>This is my main project when I was working on Robotics at Purdue ECE.
+Place recognition with image time series, published at ASP-AVS-11 workshop.
+Paper | Slides | Video | BibTeX</description>
+    </item>
+    
+    <item>
+      <title>Resources for USTCers</title>
+      <link>/post/2008-08-08-ustc/</link>
+      <pubDate>Fri, 08 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2008-08-08-ustc/</guid>
+      <description>I graduated from University of Science and Technology of China in 2008, and then went to U.S. for graudate study. USTC has always held a special place in my heart. Here are some letter templates that I prepared during my graduate school application, and I hope they would still be useful to my fellow USTCers who are preparing to apply for graduate schools.
+Watermarked letter template in doc,latex formats
+USTCers please feel free to contact me at 1919yuan at gmail dot com anytime &amp;ndash; I enjoyed my days at USTC so much, and I would like to do all I can to help make USTC a better place.</description>
+    </item>
+    
+  </channel>
+</rss>

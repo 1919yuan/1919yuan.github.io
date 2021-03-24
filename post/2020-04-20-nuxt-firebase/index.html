@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Deploy Nuxt to Firebase Functions and Hosting in Universal Mode (SSR) with Firebase Authentication and Firestore</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//use.fontawesome.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  <link href="///disqus.com" rel="dns-prefetch">
+  <link href="//c.disquscdn.com" rel="dns-prefetch">
+  
+  <link href="//www.google-analytics.com" rel="dns-prefetch">
+  
+
+  
+
+  
+  <meta name="author" content="Lin Yuan">
+  <meta name="description" content="The example repository is located at https://github.com/1919yuan/nuxt-firebase-example
+ I&amp;rsquo;ve been volunteering in an NPO and learning webapp development recently. After procrastinating for a long time, I finally settled down on using Nuxt.js for developing the website for the NPO. Even though there are many resources on nuxtjs.org about deploying to different environments, there is not an official guide about deploying an universal mode Nuxt.js application to Firebase. This becomes more difficult when you want to leverage Firebase&amp;rsquo;s authentication and firestore service in universal mode.">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Deploy Nuxt to Firebase Functions and Hosting in Universal Mode (SSR) with Firebase Authentication and Firestore">
+    <meta name="twitter:description" content="The example repository is located at https://github.com/1919yuan/nuxt-firebase-example
+ I&amp;rsquo;ve been volunteering in an NPO and learning webapp development recently. After procrastinating for a long time, I finally settled down on using Nuxt.js for developing the website for the NPO. Even though there are many resources on nuxtjs.org about deploying to different environments, there is not an official guide about deploying an universal mode Nuxt.js application to Firebase. This becomes more difficult when you want to leverage Firebase&amp;rsquo;s authentication and firestore service in universal mode.">
+    <meta name="twitter:image" content="/images/avatar.jpg">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Deploy Nuxt to Firebase Functions and Hosting in Universal Mode (SSR) with Firebase Authentication and Firestore">
+  <meta property="og:description" content="The example repository is located at https://github.com/1919yuan/nuxt-firebase-example
+ I&amp;rsquo;ve been volunteering in an NPO and learning webapp development recently. After procrastinating for a long time, I finally settled down on using Nuxt.js for developing the website for the NPO. Even though there are many resources on nuxtjs.org about deploying to different environments, there is not an official guide about deploying an universal mode Nuxt.js application to Firebase. This becomes more difficult when you want to leverage Firebase&amp;rsquo;s authentication and firestore service in universal mode.">
+  <meta property="og:url" content="/post/2020-04-20-nuxt-firebase/">
+  <meta property="og:image" content="/images/avatar.jpg">
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3">
+
+
+<link rel="canonical" href="/post/2020-04-20-nuxt-firebase/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="@1919yuan">
+<meta name="msapplication-tooltip" content="@1919yuan">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+<link rel="manifest" href="/manifest.json">
+
+
+<link rel="preload" href="/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="/images/avatar.jpg" as="image">
+<link rel="preload" href="/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="/styles/main-rendered.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+<script data-ad-client="ca-pub-3548271281966965" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="fas fa-caret-up" aria-hidden="true"></span></a>
+      
+        
+	<a role="button" aria-label="Go to comments" title="Go to comments" class="to-comment" href="#disqus_thread"><span class="fas fa-comment-dots" aria-hidden="true"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <a href=""><img class="avatar" src="/images/avatar.jpg" alt="Avatar"></a>
+  
+  <h2 class="title"><a href="">@1919yuan</a></h2>
+  
+  <p class="subtitle">Sweeping Floor Engineer</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/about/">About</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="/gdocifymd/">Markdown To Docs (GdocifyMd)</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:1919yuan@gmail.com" title="Email" aria-label="Email">
+            <span class="fas fa-envelope" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/1919yuan" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="fab fa-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//www.linkedin.com/in/1919yuan" rel="me" title="LinkedIn" aria-label="LinkedIn">
+            <span class="fab fa-linkedin" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Deploy Nuxt to Firebase Functions and Hosting in Universal Mode (SSR) with Firebase Authentication and Firestore</h1>
+      <p class="post-meta">@Lin Yuan · Apr 20, 2020 · 12 min read</p>
+    </header>
+    <article class="post-content"><blockquote>
+<p>The example repository is located at <a href="https://github.com/1919yuan/nuxt-firebase-example">https://github.com/1919yuan/nuxt-firebase-example</a></p>
+</blockquote>
+<p>I&rsquo;ve been volunteering in an NPO and learning webapp development recently. After
+procrastinating for a long time, I finally settled down on using Nuxt.js for
+developing the website for the NPO. Even though there are many resources on
+<a href="https://nuxtjs.org/faq">nuxtjs.org</a> about deploying to different environments,
+there is not an official guide about deploying an universal mode Nuxt.js
+application to Firebase. This becomes more difficult when you want to leverage
+Firebase&rsquo;s authentication and firestore service in universal mode. After a
+series of trial and error, and with the help of many valuable articles and
+repositories <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, I was able to finally configure the app with
+authentication and firestore on Firebase hosting and Firebase functions. It was
+an interesting learning process, so I would like to share the steps to recreate
+a minimal working Nuxt.js app with Firebase authentication, firestore deployed
+to Firebase Hosting and Functions in universal mode.</p>
+<h1 id="project-setup">Project setup</h1>
+<blockquote>
+<p>TL;DR: Create Nuxt.js repo and Firebase project.</p>
+</blockquote>
+<h2 id="create-a-nuxtjs-project">Create a Nuxt.js project</h2>
+<p>Install <a href="https://nvm.sh"><code>nvm</code></a> and use Node.js 10 runtime if you haven&rsquo;t set
+that up already. Then create a Nuxt.js app.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">npx create-nuxt-app nuxt-firebase-example
+</code></pre></div><p>You are free to choose any options for the questions asked by the npx CLI, but
+below are the choices I used in the example Github repository. Be sure to choose
+SSR mode for your app because that&rsquo;s the most difficult part that this post is
+about.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">? Choose programming language JavaScript
+? Choose the package manager Yarn
+? Choose UI framework Buefy
+? Choose custom server framework Express
+? Choose Nuxt.js modules Axios, DotEnv
+? Choose linting tools ESLint
+? Choose test framework None
+? Choose rendering mode Universal <span style="color:#f92672">(</span>SSR<span style="color:#f92672">)</span>
+</code></pre></div><p>Note that after creation, <code>nuxt-create-app</code> adopts the default folder structure
+like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls nuxt-firebase-example
+README.md  assets  components  layouts  middleware  node_modules  nuxt.config.js
+package.json  pages  plugins  server  static  store  yarn.lock
+</code></pre></div><p>However, because we want to deploy server side to Firebase functions, and client
+side to Firebase hosting, we need to create two packages within our project
+folder. Therefore, following the example in <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, we want to move the source
+folders down to the <code>src/</code> folder, with a structure like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls nuxt-firebase-example
+README.md src node_modules nuxt.config.js package.json yarn.lock
+$ ls nuxt-firebase-example/src
+assets  components  layouts  middleware  pages  plugins  server  static  store
+</code></pre></div><p>There will be a <code>functions/</code> directory in parallel with the <code>src/</code> folder, for
+deploying the built universal mode app after the next step.</p>
+<h2 id="initialize-the-firebase-project">Initialize the Firebase project</h2>
+<p>Then install Firebase CLI:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yarn global add firebase-tools
+firebase login
+<span style="color:#75715e"># Follow the browser prompts to finish signing in your Firebase account for CLI.</span>
+firebase init
+</code></pre></div><p>Choose &ldquo;Hosting&rdquo; and functions on the prompt like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">? Which Firebase CLI features <span style="color:#66d9ef">do</span> you want to set up <span style="color:#66d9ef">for</span> this folder? Press Space
+to <span style="color:#66d9ef">select</span> features, <span style="color:#66d9ef">then</span> Enter to confirm your choices.
+◯ Database: Deploy Firebase Realtime Database Rules
+◯ Firestore: Deploy rules and create indexes <span style="color:#66d9ef">for</span> Firestore
+◉ Functions: Configure and deploy Cloud Functions
+◉ Hosting: Configure and deploy Firebase Hosting sites
+◯ Storage: Deploy Cloud Storage security rules
+◯ Emulators: Set up local emulators <span style="color:#66d9ef">for</span> Firebase features
+</code></pre></div><p>Create a new project using the Firebase CLI. You can do this at
+<a href="https://console.firebase.google.com">https://console.firebase.google.com</a> too. Below are the options I used for the
+example repository.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">? Please <span style="color:#66d9ef">select</span> an option: Create a new project
+i  If you want to create a project in a Google Cloud organization or folder,
+please use <span style="color:#e6db74">&#34;firebase projects:create&#34;</span> instead, and <span style="color:#66d9ef">return</span> to this command when
+you<span style="color:#960050;background-color:#1e0010">&#39;</span>ve created the project.
+? Please specify a unique project id <span style="color:#f92672">(</span>warning: cannot be modified afterward<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>6-30 characters<span style="color:#f92672">]</span>:
+<span style="color:#75715e"># This project id needs to be globally unique.</span>
+<span style="color:#f92672">()</span> nuxt-firebase-example-1919yuan
+? What language would you like to use to write Cloud Functions? JavaScript
+? Do you want to use ESLint to catch probable bugs and enforce style? No
+? Do you want to install dependencies with npm now? Yes
+? What <span style="color:#66d9ef">do</span> you want to use as your public directory? public
+? Configure as a single-page app <span style="color:#f92672">(</span>rewrite all urls to /index.html<span style="color:#f92672">)</span>? No
+</code></pre></div><p>You would also want to create a Firebase app inside your newly created firebase
+project. To do this, you can either create an app at
+<a href="https://console.firebase.google.com">console.firebase.google.com</a>, or use the
+Firebase CLI like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ firebase apps:create web
+Create your WEB app in project nuxt-firebase-example-1919yuan:
+? What would you like to call your app? nuxt
+✔ Creating your Web app
+
+🎉🎉🎉 Your Firebase WEB App is ready! 🎉🎉🎉
+
+App information:
+  - App ID: <span style="color:#f92672">{</span>your_app_id<span style="color:#f92672">}</span>
+  - Display name: nuxt
+</code></pre></div><p>After the above commands, you&rsquo;ll have a root project directory like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls nuxt-firebase-example
+README.md  firebase.json  functions  node_modules  nuxt.config.js  package.json
+public  src  yarn.lock
+$ ls nuxt-firebase-example/functions
+index.js  node_modules  package.json
+</code></pre></div><h2 id="install-nuxtjs-modules">Install Nuxt.js modules</h2>
+<p>Now we will install related Firebase modules in addition to the initial Nuxt.js
+project setup.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># For the convenience of setting up Firebase client and using $fireStore</span>
+<span style="color:#75715e"># objects across app and store.</span>
+$ yarn add @nuxtjs/firebase firebase
+<span style="color:#75715e"># Firebase Admin SDK and jwt-decode, for server side token verification.</span>
+$ yarn add firebase-admin jwt-decode
+<span style="color:#75715e"># Add corejs which is compatible with @nuxtjs/firebase</span>
+$ yarn add core-js@2.6.10
+<span style="color:#75715e"># Add cookie handling packages</span>
+$ yarn add cookie cookie-universal-nuxt
+</code></pre></div><h1 id="make-code-and-configuration-changes">Make code and configuration changes</h1>
+<h2 id="setup-nuxt-firebase-module">Setup Nuxt Firebase Module</h2>
+<p>Following the instructions by lupas@, we setup the module config for
+<code>@nuxtjs/firebase</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">...
+<span style="color:#a6e22e">modules</span> {
+...
+  <span style="color:#e6db74">&#39;@nuxtjs/firebase&#39;</span>
+...
+},
+<span style="color:#a6e22e">firebase</span><span style="color:#f92672">:</span> {
+  <span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">apiKey</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_API_KEY</span>,
+    <span style="color:#a6e22e">authDomain</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_AUTH_DOMAIN</span>,
+    <span style="color:#a6e22e">databaseURL</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_DATABASE_URL</span>,
+    <span style="color:#a6e22e">projectId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_PROJECT_ID</span>,
+    <span style="color:#a6e22e">storageBucket</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_STORAGE_BUCKET</span>,
+    <span style="color:#a6e22e">messagingSenderId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_MESSAGING_SENDER_ID</span>,
+    <span style="color:#a6e22e">appId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_APP_ID</span>,
+    <span style="color:#a6e22e">measurementId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FIREBASE_MEASUREMENT_ID</span>,
+  },
+  <span style="color:#a6e22e">services</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">auth</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+    <span style="color:#a6e22e">firestore</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+  }
+},
+<span style="color:#a6e22e">build</span><span style="color:#f92672">:</span> {
+  ...
+  <span style="color:#a6e22e">transpile</span><span style="color:#f92672">:</span> [
+    ...
+    <span style="color:#e6db74">&#39;/^nuxt-fire/&#39;</span>,
+    ...
+  ]
+  ...
+},
+<span style="color:#a6e22e">srcDir</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;src&#39;</span>
+</code></pre></div><p>Please note here that I couldn&rsquo;t really get <code>@nuxtjs/firebase</code> to work in
+universal mode by following lupas@&lsquo;s guide on <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, so I am only using
+<code>@nuxtjs/firebase</code> as a convenient wrapper for the Firebase client library. I
+was only able to make Firebase authentication work in universal mode by
+following Austin&rsquo;s tutorial <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Finally we also want to modify the
+<code>nuxt.config.js</code> file located at the root of the project directory to know that
+the source files of our Nuxt.js project is located at the <code>src</code> dir.</p>
+<p>After the above setup, you may have noticed that we have already relied on
+various environment variables so far:</p>
+<ul>
+<li><code>GOOGLE_APPLICATION_CREDENTIALS</code></li>
+<li><code>FIREBASE_API_KEY</code></li>
+<li><code>FIREBASE_AUTH_DOMAIN</code></li>
+<li><code>FIREBASE_DATABASE_URL</code></li>
+<li><code>FIREBASE_PROJECT_ID</code></li>
+<li><code>FIREBASE_STORAGE_BUCKET</code></li>
+<li><code>FIREBASE_MESSAGING_SENDER_ID</code></li>
+<li><code>FIREBASE_APP_ID</code></li>
+<li><code>FIREBASE_MEASUREMENT_ID</code></li>
+</ul>
+<p>We will set these up using our <code>dotenv</code> dependency chosen at the time we ran
+<code>create-nuxt-app</code>.</p>
+<p>First, add dotenv initialization to <code>nuxt.config.js</code> at the top:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;dotenv&#39;</span>).<span style="color:#a6e22e">config</span>()
+</code></pre></div><p>Second, create the <code>.env</code> file at the project root:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">FIREBASE_API_KEY<span style="color:#f92672">={</span>your_api_key<span style="color:#f92672">}</span>
+FIREBASE_AUTH_DOMAIN<span style="color:#f92672">={</span>your_project_id<span style="color:#f92672">}</span>.firebaseapp.com
+FIREBASE_DATABASE_URL<span style="color:#f92672">=</span>https://<span style="color:#f92672">{</span>your_project_id<span style="color:#f92672">}</span>.firebaseio.com
+FIREBASE_PROJECT_ID<span style="color:#f92672">={</span>your_project_id<span style="color:#f92672">}</span>
+FIREBASE_STORAGE_BUCKET<span style="color:#f92672">={</span>your_project_id<span style="color:#f92672">}</span>.appspot.com
+FIREBASE_MESSAGING_SENDER_ID<span style="color:#f92672">={</span>your_sender_id<span style="color:#f92672">}</span>
+FIREBASE_APP_ID<span style="color:#f92672">={</span>your_app_id<span style="color:#f92672">}</span>
+FIREBASE_MESUREMENT_ID<span style="color:#f92672">={</span>your_measurement_id<span style="color:#f92672">}</span>
+GOOGLE_APPLICATION_CREDENTIALS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;firebase_key.json&#34;</span>
+</code></pre></div><p>The <code>firebase_key.json</code> file is not needed for Firebase client initialization,
+but Firebase Admin initialization on server side. You can download this service
+account key file from &ldquo;console.firebase.google.com &gt; Project Settings &gt; Service
+Accounts &gt; Generate new private key&rdquo;. Save it to the root of your project dir
+with the name <code>firebase_key.json</code>.</p>
+<h2 id="firebase-authentication-in-universal-mode">Firebase Authentication in Universal Mode</h2>
+<p>Now we are going to follow the Austin&rsquo;s article <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> to setup a Axios interceptor
+on client side and a Firebase admin token parser on server side.</p>
+<p>There are many steps and Austin did a good job of explaining it. Please follow
+the tutorial
+<a href="https://levelup.gitconnected.com/using-firebase-authentication-in-a-nuxt-server-side-rendered-application-c2a624a9e999">there</a>.
+The files that you&rsquo;ll need to create/modify are:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">src/plugins/auth-listener.js src/plugins/axios.js src/store/index.js
+</code></pre></div><p>And of course <code>nuxt.config.js</code>. Please check out the <a href="https://github.com/1919yuan/nuxt-firebase-example">example
+repository</a> created for this
+article and get the code artifacts there.</p>
+<p>There are two notes that I&rsquo;d like to add about Austin&rsquo;s article <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>:</p>
+<ol>
+<li>The use of the <code>__session</code> cookie. It turns out that when I try to host my
+server side app on Firebase functions and client side app on Firebase
+hosting, the only cookie that&rsquo;s able to appear on both server and client side
+is the <code>__session</code> cookie. I&rsquo;ve tried to user other cookie names with <code>lang</code>,
+<code>__lang</code>, for my i18n work of keeping the user&rsquo;s choice of language, but they
+have all failed to appear with the request sent to the server end on Firebase
+functions. (I should have read Austin&rsquo;s article more carefully&hellip;) So in my
+example repo I changed the vuex store to use JSON encoding and decoding to
+handle the <code>__session</code> cookie.</li>
+<li>How to initialize <code>firebase-admin</code>. This step becomes really tricky in the
+SSR setup. Firebase admin must be initialized inside <code>nuxt.config.js</code>, before
+the <code>config</code> blob, and <code>dotenv</code> needs to be initialized before
+<code>firebase-admin</code> to provide access to environment variables. This same
+initialization needs to be done in both the root <code>nuxt.config.js</code> and the
+<code>functions/index.js</code> file. I also tried doing the initialization in
+<code>src/store/index.js</code> or <code>src/server/index.js</code> and neither works. In the
+failure mode, your SSR app would return the famous error message:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ERROR  Your API key is invalid, please check you have copied it correctly.
+</code></pre></div></li>
+</ol>
+<h2 id="firebase-functions">Firebase functions</h2>
+<p>Now we&rsquo;ve finished most of the coding for our Nuxt.js app, but we need to give
+it another entry point for Firebase functions. There have been many articles on
+how to deploy Nuxt.js&rsquo;s server side app onto Firebase functions, but I was
+mainly stuck at two points:</p>
+<ol>
+<li>How to make the built artifact inside <code>.nuxt</code> available for the <code>functions/</code>
+directory.
+There has been example Github repositories using different ways of copying
+<code>.nuxt</code>, either by specifying a <code>buildDir</code> field in <code>nuxt.config.js</code>, or by
+copying them explicitly before deploying to Firebase. After trial and error,
+I agree with <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> that the <code>buildDir</code> specification doesn&rsquo;t work quite well:
+there may be dependencies that won&rsquo;t work (I suspect <code>@nuxtjs/firebase</code> is
+one of them) if the <code>.nuxt</code> directory is not at the same level as the
+<code>package.json</code> file.</li>
+<li>How to make environment variables available for server side and client side
+apps.  This also took me a long time to figure out: <code>process.env.*</code>
+environment variables are only available to server side app, and only those
+specially exposed variables in the <code>env</code> field of <code>nuxt.config.js</code> is
+available on client side. This is a good feature for security concerns, but
+it just took me too long to figure out. Another issue that took me a long
+time to figure out was that the <code>dotenv</code> config needs to be initialized both
+inside <code>index.js</code> in <code>functions/</code> and <code>nuxt.config.js</code>. I only initialized it
+in <code>src/server</code> before, and it took me a long time to debug and
+realize that my environment variables were not setup inside Firebase
+functions.</li>
+</ol>
+<p>So, the correct structure to have for the <code>functions/</code> directory should be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls -a functions
+.nuxt/ index.js package.json
+</code></pre></div><p>And <code>functions/</code> should have similar (not necessarily all) dependencies as the
+root project dir. So to add the dependencies, we can do:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">yarn add dotenv firebase firebase-admin @nuxtjs/firebase @nuxtjs/axios jwt-decode nuxt nuxt-buefy
+</code></pre></div><h2 id="work-on-firebase-hosting">Work on Firebase Hosting</h2>
+<p>Now it&rsquo;s time to think about what portion of the built Nuxt.js app are static
+files that should be deployed to Firebase hosting. There are also many different
+ways of doing this according to <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. But after trial and error, I found out
+that only the <code>.nuxt/dist/client/</code> directory needs to be copied to the
+<code>public/_nuxt/</code> directory that is waiting to be deployed to Firebase Hosting.</p>
+<p>So, the correct directory structure for Firebase Hosting should be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls -a public
+<span style="color:#75715e"># _nuxt/* should be copied from .nuxt/dist/client/*</span>
+_nuxt/ favicon.ico
+</code></pre></div><h1 id="wrapping-up">Wrapping up</h1>
+<h2 id="deploy-with-one-command">Deploy with one command</h2>
+<p>So, to wrap it up, by using <code>package.json</code> and <code>firebase.json</code>, we can copy
+around necessary files and accomplish a <em>one line command</em> for deployment:</p>
+<p><code>package.json</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;dev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;yarn install &amp;&amp; yarn --cwd functions install &amp;&amp; cross-env NODE_ENV=development HOST=0.0.0.0 PORT=8080 nodemon src/server/index.js --watch src/server&#34;</span>,
+    <span style="color:#e6db74">&#34;build&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;yarn install &amp;&amp; yarn --cwd functions install &amp;&amp; nuxt build &amp;&amp; rm -rf functions/.nuxt &amp;&amp; mv .nuxt functions &amp;&amp; rm -rf public &amp;&amp; mkdir public &amp;&amp; cp -r functions/.nuxt/dist/client public/_nuxt &amp;&amp; cp -a src/static/. public/&#34;</span>,
+    <span style="color:#e6db74">&#34;start&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cross-env NODE_ENV=production node src/server/index.js&#34;</span>,
+    <span style="color:#e6db74">&#34;ssr&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;firebase serve&#34;</span>,
+    <span style="color:#e6db74">&#34;preparedev&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cp firebase.json.development firebase.json &amp;&amp; cp firebase_key.json.development firebase_key.json &amp;&amp; cp .env.development .env &amp;&amp; cp -f firebase_key.json .env functions/&#34;</span>,
+    <span style="color:#e6db74">&#34;prepareprod&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cp firebase.json.production firebase.json &amp;&amp; cp firebase_key.json.production firebase_key.json &amp;&amp; cp .env.production .env &amp;&amp; cp -f firebase_key.json .env functions/&#34;</span>,
+    <span style="color:#e6db74">&#34;stage&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cp firebase.json.development firebase.json &amp;&amp; firebase use development &amp;&amp; firebase deploy&#34;</span>,
+    <span style="color:#e6db74">&#34;deploy&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cp firebase.json.production firebase.json &amp;&amp; firebase use production &amp;&amp; firebase deploy&#34;</span>,
+    <span style="color:#e6db74">&#34;clean&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;rm -rf public/ node_modules/ functions/node_modules .nuxt functions/.nuxt&#34;</span>
+  },
+</code></pre></div><p><code>firebase.json.{development,production}</code>:
+They are two files, just differ by the <code>dev</code> or <code>prod</code> predeploy step.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+  <span style="color:#e6db74">&#34;functions&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;source&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;functions&#34;</span>,
+    <span style="color:#e6db74">&#34;predeploy&#34;</span><span style="color:#f92672">:</span> [
+      <span style="color:#e6db74">&#34;yarn prepare{dev,prod} &amp;&amp; yarn --cwd functions install &amp;&amp; yarn install &amp;&amp; yarn build&#34;</span>
+    ]
+  },
+  <span style="color:#e6db74">&#34;hosting&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;predeploy&#34;</span><span style="color:#f92672">:</span> [
+      <span style="color:#e6db74">&#34;rm -rf public &amp;&amp; mkdir public &amp;&amp; cp -r functions/.nuxt/dist/client public/_nuxt &amp;&amp; cp -a src/static/. public/&#34;</span>
+    ],
+    <span style="color:#e6db74">&#34;public&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;public/&#34;</span>,
+    <span style="color:#e6db74">&#34;ignore&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;firebase.json*&#34;</span>, <span style="color:#e6db74">&#34;**/.*&#34;</span>, <span style="color:#e6db74">&#34;**/node_modules/**&#34;</span>],
+    <span style="color:#e6db74">&#34;rewrites&#34;</span><span style="color:#f92672">:</span> [
+      {
+        <span style="color:#e6db74">&#34;source&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;**&#34;</span>,
+        <span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;nuxt&#34;</span>,
+      }
+    ]
+  }
+}
+
+</code></pre></div><h2 id="example-repository-and-demo-webapp">Example Repository and Demo webapp</h2>
+<p>The example repository accompanying this tutorial is located at
+<a href="https://github.com/1919yuan/nuxt-firebase-example">https://github.com/1919yuan/nuxt-firebase-example</a>. The sample deployed webapp is
+at <a href="https://nuxt-firebase-example-1919yuan.web.app">https://nuxt-firebase-example-1919yuan.web.app</a>.</p>
+<h1 id="tips-for-debugging">Tips for Debugging</h1>
+<h2 id="run-feature-development-with-yarn-dev">Run feature development with <code>yarn dev</code></h2>
+<p>The <code>yarn dev</code> script setup the universal Nuxt.js app with a single
+process. This comes with hot reload that enables you to iterate on feature
+development quickly.</p>
+<h2 id="emulate-firebase-environment-with-yarn-ssr">Emulate Firebase environment with <code>yarn ssr</code></h2>
+<p>This <code>yarn ssr</code> command is essentially <code>firebase serve</code>, which starts Firebase
+functions emulator and a static webserver together. This is the closest
+environment to Firebase you can get without actually deploying. It is useful for
+debugging issues that only arise in SSR mode, like cookie out-of-sync
+issues. The drawback of this mode is that changes in <code>src/</code> cannot be
+hot-reloaded.</p>
+<h2 id="error--your-api-key-is-invalid-please-check-you-have-copied-it-correctly">ERROR  Your API key is invalid, please check you have copied it correctly</h2>
+<p>This is the bug that bothered me for the longest time. There may be multiple
+issues that can cause this error message to come about. Some examples are:</p>
+<ul>
+<li>Environment variables set in <code>src/</code> are lost from the entrypoint in
+<code>functions/</code>. <code>dotenv</code> also need to be initialized twice.</li>
+<li><code>firebase-admin</code> is not initialized at the right places: it must be
+initialized once inside <code>nuxt.config.js</code> and once inside <code>functions/index.js</code>.</li>
+<li><code>@nuxtjs/firebase</code> is not installed inside <code>functions/</code>.</li>
+</ul>
+<h2 id="cookie-not-set-on-client-side">Cookie not set on client side</h2>
+<p>It may be a headache that sometimes a cookie you set in client side doesn&rsquo;t
+propagate to Firebase functions (i.e. the server side). You can only debug such
+issue using <code>firebase serve</code> and try printing out the cookies at different code
+locations. <code>cookie-universal-nuxt</code> is the solution for me. Using that package,
+the <code>__session</code> cookie I set appears on both server and client side.</p>
+<h2 id="cookie-not-sent-to-server-side">Cookie not sent to server side</h2>
+<p>This issue was noted in Austin&rsquo;s article <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, where he pointed out that if
+hosting on Firebase functions, only the cookie with name <code>__session</code> goes
+together with the http request to Firebase functions.</p>
+<h2 id="builddir-in-nuxtconfigjs"><code>buildDir</code> in <code>nuxt.config.js</code></h2>
+<p>There are some tutorials using the <code>buildDir</code> option to output the <code>.nuxt</code> build
+directory out to <code>functions</code>, but I had the same observation with <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>, that if
+the <code>buildDir</code> is not the default <code>.nuxt</code> directory, lots of UI / functions
+simply don&rsquo;t work. Therefore we have to move it with the build scripts.</p>
+<h2 id="_nuxt-directory"><code>_nuxt</code> directory</h2>
+<p>Only the <code>.nuxt/dist/client</code> directory is relevant for Firebase hosting. There
+are some sample code that moves the entire <code>.nuxt/</code> directory to Firebase
+hosting, that is not necessary.</p>
+<h1 id="references">References</h1>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://levelup.gitconnected.com/using-firebase-authentication-in-a-nuxt-server-side-rendered-application-c2a624a9e999">Using Firebase Authentication in a Nuxt Server-side Rendered Application</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://firebase.nuxtjs.org/">Nuxt Firebase</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://www.youtube.com/watch?v=ZYUWsjUxxUQ">Vue.js/Nuxt on Firebase hosting</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://dev.to/kiritchoukc/deploy-nuxt-on-firebase-4ad8">Deploy nuxt on Firebase</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><a href="https://dev.to/slushnys/how-to-host-nuxt-js-application-on-firebase-with-a-single-command-1nio">How to host Nuxt.js application on firebase with a single command</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p><a href="https://github.com/williamchong007/nuxt-ssr-firebase">williamchong007/nuxt-ssr-firebase</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/nuxt"><span class="tag">Nuxt</span></a></li>
+        
+          <li><a href="/tags/firebase"><span class="tag">Firebase</span></a></li>
+        
+          <li><a href="/tags/ssr"><span class="tag">SSR</span></a></li>
+        
+          <li><a href="/tags/firestore"><span class="tag">Firestore</span></a></li>
+        
+          <li><a href="/tags/hosting"><span class="tag">Hosting</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.This post was published <strong>338</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = '1919yuan-disqus-com';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 @1919yuan</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-89999624-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+  </body>
+</html>

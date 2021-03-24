@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>getssl on @1919yuan</title>
+    <link>/tags/getssl/</link>
+    <description>Recent content in getssl on @1919yuan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 25 May 2020 12:52:26 -0400</lastBuildDate>
+    
+	<atom:link href="/tags/getssl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Replace QNAP&#39;s SSL Certificate &amp; Private Key programmatically</title>
+      <link>/post/2020-05-25-cloudflare/</link>
+      <pubDate>Mon, 25 May 2020 12:52:26 -0400</pubDate>
+      
+      <guid>/post/2020-05-25-cloudflare/</guid>
+      <description>I&amp;rsquo;ve been trying to setting up DDNS for my QNAP NAS with SSL connection. I don&amp;rsquo;t want to use the QNAP Cloudlink DDNS service because I wanted to use QVPN service to globally gate all traffic going out from QNAP. And that disables the QNAP Cloudlink service from getting the real IP address for my NAS.
+The basic logic goes along this tutorial: How to set up a free dynamic hostname with SSL cert using Google Domains, except the following moving parts:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NIPS on @1919yuan</title>
+    <link>/tags/nips/</link>
+    <description>Recent content in NIPS on @1919yuan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 10 Sep 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/nips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Non-parametric Exponential Family Model with applications to ERGM
+</title>
+      <link>/post/2012-09-10-npexp/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2012-09-10-npexp/</guid>
+      <description>After leaving my first adventure in a robotics lab at Purdue, I did 2+ years research on machine learning. The result is two NIPS workshop papers, one proposing a non-parametric exponential family model and the other applies the model to social network analysis - exponential random graph models.
+The theory of non-parametric exponential family model is more interesting, and we later submitted an extended version of the paper to arXiv.</description>
+    </item>
+    
+  </channel>
+</rss>

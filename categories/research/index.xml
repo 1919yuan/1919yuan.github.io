@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research on @1919yuan</title>
+    <link>/categories/research/</link>
+    <description>Recent content in Research on @1919yuan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 10 Sep 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Non-parametric Exponential Family Model with applications to ERGM
+</title>
+      <link>/post/2012-09-10-npexp/</link>
+      <pubDate>Mon, 10 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2012-09-10-npexp/</guid>
+      <description>After leaving my first adventure in a robotics lab at Purdue, I did 2+ years research on machine learning. The result is two NIPS workshop papers, one proposing a non-parametric exponential family model and the other applies the model to social network analysis - exponential random graph models.
+The theory of non-parametric exponential family model is more interesting, and we later submitted an extended version of the paper to arXiv.</description>
+    </item>
+    
+    <item>
+      <title>Augmented Lagrangian method on the Thomson problem
+</title>
+      <link>/post/2012-05-28-cs590opt/</link>
+      <pubDate>Mon, 28 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2012-05-28-cs590opt/</guid>
+      <description>During the Spring 2012 semester, Nan Ding and I took the class CS590OPT together. The final project we did was on developing Alternating Direction Method of Multipliers (ADMM) and Augmented Lagrangian Method (ALM) and use it to solve the Thomson problem.
+Report | Code</description>
+    </item>
+    
+    <item>
+      <title>Robust Semantic Place Recognition with Vocabulary Tree and Landmark Detection
+</title>
+      <link>/post/2011-07-07-bolts/</link>
+      <pubDate>Thu, 07 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2011-07-07-bolts/</guid>
+      <description>This is my main project when I was working on Robotics at Purdue ECE.
+Place recognition with image time series, published at ASP-AVS-11 workshop.
+Paper | Slides | Video | BibTeX</description>
+    </item>
+    
+  </channel>
+</rss>
