@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
-    <lastBuildDate>Mon, 25 May 2020 12:52:26 -0400</lastBuildDate>
-    
-	<atom:link href="/tags/getssl/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 25 May 2020 12:52:26 -0400</lastBuildDate><atom:link href="/tags/getssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Replace QNAP&#39;s SSL Certificate &amp; Private Key programmatically</title>
       <link>/post/2020-05-25-cloudflare/</link>
