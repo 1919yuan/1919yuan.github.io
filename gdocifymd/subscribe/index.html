@@ -252,19 +252,22 @@ your Google Docs Add-on usage in the following input before making the purchase!
     onApprove: function(data, actions) {
       return actions.order.capture().then(
         function(details) {
-          $.post(
-            "https://us-central1-gdocify.cloudfunctions.net/Api/Subscribe",
-            {
+          $.ajax({
+            url: "https://us-central1-gdocify.cloudfunctions.net/Api/Subscribe",
+            type: "POST",
+            data: {
               email: $("#google-account-email").val(),
               plan: plan
             },
-            function (data, status) {
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+            success: function (data, status) {
               alert(data.error_message);
-            })
-            .fail(function() {
-              alert("There was an error when updating your membership, please " +
-                    "contact 1919yuan+gdocifymdpro@gmail.com for assistance.");
-            });
+            }
+          }).fail(function() {
+            alert("There was an error when updating your membership, please " +
+                  "contact 1919yuan+gdocifymdpro@gmail.com for assistance.");
+          });
         }
       );
     }
