@@ -1,146 +1,240 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>/resume/</loc>
     <lastmod>2017-12-01T17:19:46-05:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
     <lastmod>2020-04-26T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/gdocifymd/</loc>
     <lastmod>2020-05-31T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url><url>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gdocifymd/subscribe/</loc>
-    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url><url>
+    <lastmod>2023-07-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/gdocifymd/privacy/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/gdocifymd/terms/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/cloudflare/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/dd-wrt/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/getssl/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/qnap/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/2020-05-25-cloudflare/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/ssl/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/technology/</loc>
     <lastmod>2020-05-25T12:52:26-04:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/2020-04-20-nuxt-firebase/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/development/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/firebase/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/firestore/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/hosting/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/nuxt/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/ssr/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/exponential-family/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/machine-learning/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/neurips/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/nips/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/non-parametric/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/2012-09-10-npexp/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/research/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/research/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/statistics/</loc>
     <lastmod>2012-09-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/admm/</loc>
     <lastmod>2012-05-28T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/augmented-lagrangian/</loc>
     <lastmod>2012-05-28T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/2012-05-28-cs590opt/</loc>
     <lastmod>2012-05-28T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/optimization/</loc>
     <lastmod>2012-05-28T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/dynamic-warping/</loc>
     <lastmod>2011-07-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/localization/</loc>
     <lastmod>2011-07-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/robotics/</loc>
     <lastmod>2011-07-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/2011-07-07-bolts/</loc>
     <lastmod>2011-07-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/time-series/</loc>
     <lastmod>2011-07-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/latex/</loc>
     <lastmod>2008-08-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/categories/misc/</loc>
     <lastmod>2008-08-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/post/2008-08-08-ustc/</loc>
     <lastmod>2008-08-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/template/</loc>
     <lastmod>2008-08-08T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/ustc/</loc>
     <lastmod>2008-08-08T00:00:00+00:00</lastmod>
   </url>
+  
 </urlset>

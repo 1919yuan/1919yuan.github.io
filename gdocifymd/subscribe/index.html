@@ -45,7 +45,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.81.0">
+<meta name="generator" content="Hugo 0.80.0">
 
 
 <link rel="canonical" href="/gdocifymd/subscribe/">
@@ -204,13 +204,13 @@
       <h1 class="post-title">GDocifyMd Pro</h1>
       <p class="post-meta">
         Effective Date: Jun 1, 2020,
-        Last Update: Jun 1, 2020
+        Last Update: Jul 29, 2023
       </p>
     </header>
     <article class="post-content"><h2 id="gdocifymd-pro">GDocifyMd Pro</h2>
 <blockquote>
-<p>Get unlimited number of conversions for $1 a month, $4.99 for 6 months, or
-$7.99 a year.</p>
+<p>Get unlimited number of conversions for $1.99 a month, $6.99 for 6 months, or
+$10.99 a year.</p>
 </blockquote>
 <p>Please make sure you input the correct <strong>Google Account Email</strong> associated with
 your Google Docs Add-on usage in the following input before making the purchase!</p>
@@ -218,25 +218,36 @@ your Google Docs Add-on usage in the following input before making the purchase!
        placeholder="Your Google Account email address"
        style="width: 100%;" />
 <p> Choose a subscription length: <br/>
-<label><input type="radio" name="subscription" value="monthly">1 month - $1</label><br/>
-<label><input type="radio" name="subscription" value="halfyear">6 months - $4.99</label><br/>
-<label><input type="radio" name="subscription" value="annual">12 months - $7.99</label>
+<label><input type="radio" name="subscription" value="monthly">1 month - $1.99</label><br/>
+<label><input type="radio" name="subscription" value="halfyear">6 months - $6.99</label><br/>
+<label><input type="radio" name="subscription" value="annual">12 months - $10.99</label>
 </p>
 
 <div id="paypal-button-container"></div><script src="https://www.paypal.com/sdk/js?client-id=AUkaQ2ZJMjjoWYfBg5uZiMdoaLYfc0sV12tk3DskcGNqcWWxihME3YKCP1-QFFKroWvQM1gSmRQXOH6L&currency=USD"
                                                 data-sdk-integration-source="button-factory"></script>
 <script>
-  var price = '1';
+  var price = '1.99';
   var plan = 'monthly';
+  var postData = "";
   $('input[type=radio][name=subscription]').change(function() {
     plan = this.value;
     if (plan == "annual") {
-      price = '7.99';
+      price = '10.99';
     } else if (plan == "halfyear") {
-      price = '4.99';
+      price = '6.99';
     } else {
-      price = '1';
+      price = '1.99';
     }
+    postData = JSON.stringify({
+      email: $("#google-account-email").val(),
+      plan: plan
+    });
+  });
+  $("#google-account-email").change(function() {
+    postData = JSON.stringify({
+      email: $("#google-account-email").val(),
+      plan: plan
+    });
   });
   paypal.Buttons({
     style: {
@@ -253,20 +264,17 @@ your Google Docs Add-on usage in the following input before making the purchase!
       return actions.order.capture().then(
         function(details) {
           $.ajax({
-            url: "https://us-central1-gdocify.cloudfunctions.net/Api/Subscribe",
             type: "POST",
-            data: {
-              email: $("#google-account-email").val(),
-              plan: plan
-            },
-            contentType:"application/json; charset=utf-8",
-            dataType:"json",
-            success: function (data, status) {
+            url: "https://us-central1-gdocify.cloudfunctions.net/Api/Subscribe",
+            contentType: "application/json; charset=UTF-8",
+            data: postData,
+            success: function(data, status) {
               alert(data.error_message);
+            },
+            error: function() {
+              alert("There was an error when updating your membership, please " +
+                    "contact 1919yuan+gdocifymdpro@gmail.com for assistance.");
             }
-          }).fail(function() {
-            alert("There was an error when updating your membership, please " +
-                  "contact 1919yuan+gdocifymdpro@gmail.com for assistance.");
           });
         }
       );
@@ -302,7 +310,7 @@ your Google Docs Add-on usage in the following input before making the purchase!
   </section>
   
 <footer class="site-footer">
-  <p>© 2017-2021 @1919yuan</p>
+  <p>© 2017-2023 @1919yuan</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>
