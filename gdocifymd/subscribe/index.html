@@ -232,7 +232,8 @@ purchase!</p>
 <script>
   var price = '1.99';
   var plan = 'monthly';
-  var postData = "";
+  var email = '';
+  var postData = '';
   $('input[type=radio][name=subscription]').change(function() {
     plan = this.value;
     if (plan == "annual") {
@@ -243,13 +244,14 @@ purchase!</p>
       price = '1.99';
     }
     postData = JSON.stringify({
-      email: $("#google-account-email").val(),
+      email: email,
       plan: plan
     });
   });
   $("#google-account-email").change(function() {
+    email = $("#google-account-email").val();
     postData = JSON.stringify({
-      email: $("#google-account-email").val(),
+      email: email,
       plan: plan
     });
   });
@@ -261,6 +263,10 @@ purchase!</p>
       label: 'paypal',
     },
     createOrder: function(data, actions) {
+      if (!email) {
+        alert("Please input your Google account email to use with GDocifyMd.");
+        return;
+      }
       return actions.order.create({
         purchase_units: [{amount: {value: price}}]});
     },
