@@ -261,10 +261,6 @@ purchase!</p>
       label: 'paypal',
     },
     createOrder: function(data, actions) {
-      if (!$(#"google-account-email").val()) {
-        alert("Please make sure you input your email to use with GDocifyMd.");
-        return;
-      }
       return actions.order.create({
         purchase_units: [{amount: {value: price}}]});
     },
