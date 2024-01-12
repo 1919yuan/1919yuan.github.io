@@ -261,6 +261,10 @@ purchase!</p>
       label: 'paypal',
     },
     createOrder: function(data, actions) {
+      if (!$(#"google-account-email").val()) {
+        alert("Please make sure you input your email to use with GDocifyMd.");
+        return;
+      }
       return actions.order.create({
         purchase_units: [{amount: {value: price}}]});
     },
@@ -314,7 +318,7 @@ purchase!</p>
   </section>
   
 <footer class="site-footer">
-  <p>© 2017-2023 @1919yuan</p>
+  <p>© 2017-2024 @1919yuan</p>
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>
