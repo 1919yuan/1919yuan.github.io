@@ -218,30 +218,37 @@ purchase!</p>
 <p>If within 5 minutes after payment you still are quota-limited, please contact
 <a href="mailto:1919yuan+gdocifymd@gmail.com">1919yuan+gdocifymd@gmail.com</a> with your
 <strong>Google Account Email</strong> information.</p>
+<p>If you ordered 12 months + API access, please contact
+<a href="mailto:1919yuan+gdocifymd@gmail.com">1919yuan+gdocifymd@gmail.com</a> to ask for
+an API key.</p>
 <input type="text" id="google-account-email"
        placeholder="Your Google Account email address"
        style="width: 100%;" />
 <p> Choose a subscription length: <br/>
 <label><input type="radio" name="subscription" value="monthly">1 month - $1.99</label><br/>
 <label><input type="radio" name="subscription" value="halfyear">6 months - $6.99</label><br/>
-<label><input type="radio" name="subscription" value="annual">12 months - $10.99</label>
+<label><input type="radio" name="subscription" value="annual">12 months - $10.99</label><br/>
+<label><input type="radio" name="subscription" value="api">12 months + API access - $19.99</label>
 </p>
 
 <div id="paypal-button-container"></div><script src="https://www.paypal.com/sdk/js?client-id=AUkaQ2ZJMjjoWYfBg5uZiMdoaLYfc0sV12tk3DskcGNqcWWxihME3YKCP1-QFFKroWvQM1gSmRQXOH6L&currency=USD"
                                                 data-sdk-integration-source="button-factory"></script>
 <script>
-  var price = '1.99';
-  var plan = 'monthly';
-  var email = '';
-  var postData = '';
-  $('input[type=radio][name=subscription]').change(function() {
+  var price = "1.99";
+  var plan = "monthly";
+  var email = "";
+  var postData = "";
+  $("input[type=radio][name=subscription]").change(function() {
     plan = this.value;
     if (plan == "annual") {
-      price = '10.99';
+      price = "10.99";
     } else if (plan == "halfyear") {
-      price = '6.99';
+      price = "6.99";
+    } else if (plan == "monthly") {
+      price = "1.99";
     } else {
-      price = '1.99';
+      plan = "annual"
+      price = "19.99";
     }
     postData = JSON.stringify({
       email: email,
@@ -257,10 +264,10 @@ purchase!</p>
   });
   paypal.Buttons({
     style: {
-      shape: 'rect',
-      color: 'gold',
-      layout: 'vertical',
-      label: 'paypal',
+      shape: "rect",
+      color: "gold",
+      layout: "vertical",
+      label: "paypal",
     },
     createOrder: function(data, actions) {
       if (!email) {
@@ -275,7 +282,7 @@ purchase!</p>
         function(details) {
           $.ajax({
             type: "POST",
-            url: "https://us-central1-gdocify.cloudfunctions.net/Api/Subscribe",
+            url: "https://us-central1-gdocify.cloudfunctions.net/Api2/Subscribe",
             contentType: "application/json; charset=UTF-8",
             data: postData,
             success: function(data, status) {
@@ -289,7 +296,7 @@ purchase!</p>
         }
       );
     }
-  }).render('#paypal-button-container');
+  }).render("#paypal-button-container");
 </script>
 
 </article>
